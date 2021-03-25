@@ -77,6 +77,14 @@ async def get_logs_file(request, document):
 
     return log_entry.render_html()
 
+@app.middleware('request')
+async def force_ssl(request):
+    if request.headers.get('X-Forwarded-Proto') == 'http':
+        return response.redirect(
+            request.url.replace('http://', 'https://', 1),
+            status=301
+        )
+
 
 if __name__ == "__main__":
     app.run(
