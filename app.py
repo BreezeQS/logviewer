@@ -84,7 +84,13 @@ async def force_ssl(request):
             request.url.replace('http://', 'https://', 1),
             status=301
         )
-
+# I am quite the beginner in Python, but i for some reason decided to poke at something
+# i am not supposed to. I don't think allowing accesss over plain ole' unencrypted HTTP
+# is something that was intentionally done to be evil, that would make everyone sound
+# stupid including me. I just wanted to find out if there was a way i could make this
+# thing force HTTPS, i don't know flask or sanic or pretty much any webdev framework yet.
+# But it appears the copy pasted code snippet above does the job, sorry if i disappointed
+# anyone reading this.
 
 if __name__ == "__main__":
     app.run(
